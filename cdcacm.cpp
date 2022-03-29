@@ -156,7 +156,12 @@ uint8_t ACM::Init(uint8_t parent, uint8_t port, bool lowspeed) {
                         break;
         } // for
 
-        if(bNumEP < 4)
+        /* 
+         * Changed Requirement from 4 to 3 Endpoints. 
+         * Fix for Issue #295 on UHS2.0 Repository.
+         * https://github.com/felis/USB_Host_Shield_2.0/issues/295
+         */
+        if(bNumEP < 3)
                 return USB_DEV_CONFIG_ERROR_DEVICE_NOT_SUPPORTED;
 
         // Assign epInfo to epinfo pointer
